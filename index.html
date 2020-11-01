@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-10-29 21:19:07 / 修改时间：21:28:40" itemprop="dateCreated datePublished" datetime="2020-10-29T21:19:07+08:00">2020-10-29</time>
+              <time title="创建时间：2020-10-29 21:33:43 / 修改时间：21:35:29" itemprop="dateCreated datePublished" datetime="2020-10-29T21:33:43+08:00">2020-10-29</time>
             </span>
 
           
@@ -234,7 +234,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="/.com//test.jpg" alt="alt 测试用" title="不知名美女"></p>
+          <p><img src="/2020/10/29/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/test.jpg" alt="alt test"></p>
 
       
     </div>
@@ -710,6 +710,125 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/04/%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="1EthanX">
+      <meta itemprop="description" content="生不出人，我很抱歉 :)">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/04/%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">注解和反射初学总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-04 12:41:22" itemprop="dateCreated datePublished" datetime="2020-10-04T12:41:22+08:00">2020-10-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-01 17:58:50" itemprop="dateModified" datetime="2020-11-01T17:58:50+08:00">2020-11-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="注解入门"><a href="#注解入门" class="headerlink" title="注解入门"></a>注解入门</h2><p><strong>一般是配合反射使用</strong></p>
+<h3 id="什么是注解"><a href="#什么是注解" class="headerlink" title="什么是注解"></a>什么是注解</h3><p>Annotation：</p>
+<ol>
+<li>可以对程序作出解释</li>
+<li>可以被其他程序(比如编译器)读取</li>
+</ol>
+<p>格式：</p>
+<p>@ +注释名，还可以添加一些参数值</p>
+<h3 id="内置注解"><a href="#内置注解" class="headerlink" title="内置注解"></a>内置注解</h3><ol>
+<li>@Override：重写方法</li>
+<li>@Deprecated：表示废弃，已过时的，不推荐使用，但是可以使用。</li>
+<li>@SuppressWarnings：镇压警告，用来抑制警告信息</li>
+</ol>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">负责解释其他注解的注解</span><br></pre></td></tr></table></figure>
+
+<p>4个元注解：@Target，@Retention，@Documented，@Inherited</p>
+<ol>
+<li>==@Target==：用于描述注解的适用范围（方法，类……） ，需要参数ElementType</li>
+<li>==@Retention==：，表示需要在什么级别保存该注释，信息用于描述注解的生命周期（SOURCE&lt;CLASS&lt;<strong>RUNTIME</strong>）RUNTIME用的最多，自定义几乎都是RUNTIME，默认是CLASS。</li>
+<li>@Document：是否将注解生成到javadoc中</li>
+<li>@Inherited：说明子类可以继承父类中的该注解</li>
+</ol>
+<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p><em>使用@interface自定义注解，自动继承Annotation接口。</em></p>
+<p><img src="/2020/10/04/%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93/image-20201004143927246.png" alt="image-20201004143927246"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test003</span> </span>&#123;</span><br><span class="line">    <span class="meta">@MyAnnotation(name = &quot;1212&quot;)</span>   <span class="comment">// 如果没有默认值，一定要复制</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE,ElementType.METHOD&#125;)</span>  <span class="comment">//作用范围 类TYPE， 方法METHOD</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>; <span class="comment">//default 默认值，若默认值为-1则代表不存在</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="反射入门-Reflection"><a href="#反射入门-Reflection" class="headerlink" title="反射入门 Reflection"></a>反射入门 Reflection</h2><p><strong>通过反射读取注解</strong><br><em>通过反射机制，java拥有了动态性</em><br>Reflection（反射）机制允许程序在执行期间借助于ReflectionAPI去的任何类的内部信息，并直接操作任意对象的内部属性及方法。</p>
+<ul>
+<li>优点：灵活</li>
+<li>缺点：慢</li>
+</ul>
+<h3 id="主要API"><a href="#主要API" class="headerlink" title="主要API"></a>主要API</h3><p><img src="/2020/10/04/%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93/image-20201004160015119.png" alt="image-20201004160015119"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">        <span class="comment">//通过反射获取类的CLass对象.</span></span><br><span class="line">        Class c1 = Class.forName(<span class="string">&quot;User&quot;</span>);</span><br><span class="line">        System.out.println(c1);</span><br><span class="line">        Class c2 = Class.forName(<span class="string">&quot;User&quot;</span>);</span><br><span class="line">        Class c3 = Class.forName(<span class="string">&quot;User&quot;</span>);</span><br><span class="line">        Class c4 = Class.forName(<span class="string">&quot;User&quot;</span>);</span><br><span class="line">        <span class="comment">//c1,c2,c3,c4的hashcode一样，说明一个类在内存中只有一个Class对象.</span></span><br><span class="line">        <span class="comment">//一个类被加载后,类的整个结构都会被封装在Class对象中.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String name, <span class="keyword">int</span> id, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;User&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, id=&quot;</span> + id +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/10/04/%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93/image-20201004161409264.png" alt="image-20201004161409264"></p>
+<p><img src="/2020/10/04/%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93/image-20201004161512212.png" alt="image-20201004161512212"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">        Person person = <span class="keyword">new</span> Student();</span><br><span class="line">        System.out.println(<span class="string">&quot;这个人是:&quot;</span>+person.name); <span class="comment">//这个人是:学生</span></span><br><span class="line">        <span class="comment">// 方式1</span></span><br><span class="line">        Class c1 =person.getClass();</span><br><span class="line">        System.out.println(c1.hashCode()); <span class="comment">//1846274136</span></span><br><span class="line">        <span class="comment">//方式2</span></span><br><span class="line">        Class c2 = Class.forName(<span class="string">&quot;Student&quot;</span>);</span><br><span class="line">        System.out.println(c2.hashCode());<span class="comment">//1846274136</span></span><br><span class="line">        <span class="comment">//方式3</span></span><br><span class="line">        Class c3 = Student.class;</span><br><span class="line">        System.out.println(c3.hashCode());<span class="comment">//1846274136</span></span><br><span class="line">        <span class="comment">//方式4:基本内置类型的包装类都有一个Type属性.</span></span><br><span class="line">        Class c4 = Integer.TYPE;</span><br><span class="line">        System.out.println(c4);<span class="comment">//int</span></span><br><span class="line">        <span class="comment">// 获得父类的类型</span></span><br><span class="line">        Class c5=c1.getSuperclass();</span><br><span class="line">        System.out.println(c5); <span class="comment">//class Person</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Person&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">&quot;学生&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Teacher</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">&quot;老师&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="哪些类型有Class对象"><a href="#哪些类型有Class对象" class="headerlink" title="哪些类型有Class对象"></a>哪些类型有Class对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test03</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Class c1 = Object.class; <span class="comment">//类</span></span><br><span class="line">        Class c2 = Comparable.class; <span class="comment">//接口</span></span><br><span class="line">        Class c3 = String[].class; <span class="comment">//一维数组</span></span><br><span class="line">        Class c4 = <span class="keyword">int</span>[][].class; <span class="comment">//二维数组</span></span><br><span class="line">        Class c5 = Override.class; <span class="comment">//注解</span></span><br><span class="line">        Class c6 = ElementType.class; <span class="comment">//枚举</span></span><br><span class="line">        Class c7 = Integer.class; <span class="comment">//</span></span><br><span class="line">        Class c8 = <span class="keyword">void</span>.class;</span><br><span class="line">        Class c9 = Class.class;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/29/Java%E4%B8%ADextends%E5%92%8Cimplements/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -776,6 +895,121 @@
 <p>c.多个无关的类可以实现同一个接口，一个类可以实现多个无关的接口。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实现接口就是在接口中定义了方法，这个方法要你自己去实现，接口可以看作一个标准，比如定义了一个动物的接口，它里面有吃（eat()）这个方法，你就可以实现这个方法implements，这个方法是自己写，可以是吃苹果，吃梨子，香蕉，或者其他的。IMPLEMENTS就是具体实现这个接口。</span><br></pre></td></tr></table></figure>
 
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="1EthanX">
+      <meta itemprop="description" content="生不出人，我很抱歉 :)">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">什么是敏捷开发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-28 12:41:22" itemprop="dateCreated datePublished" datetime="2020-09-28T12:41:22+08:00">2020-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-01 17:50:13" itemprop="dateModified" datetime="2020-11-01T17:50:13+08:00">2020-11-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="什么叫敏捷开发"><a href="#什么叫敏捷开发" class="headerlink" title="什么叫敏捷开发"></a>什么叫敏捷开发</h1><p>转载自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/jentary/p/11506762.html">https://www.cnblogs.com/jentary/p/11506762.html</a> </p>
+<h2 id="1-思维导图"><a href="#1-思维导图" class="headerlink" title="1.思维导图"></a>1.思维导图</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161630334-1958754441.png" alt="img"></p>
+<h2 id="2-概念"><a href="#2-概念" class="headerlink" title="2.概念"></a>2.概念</h2><p>简单的说，敏捷开发是一种以人为核心、迭代、循序渐进的开发方法。在敏捷开发中，软件项目的构建被切分成多个子项目，各个子项目的成果都经过测试，具备集成和可运行的特征。<br>换言之，就是把一个大项目分为多个相互联系，但也可独立运行的小项目，并分别完成，在此过程中软件一直处于可使用状态。<br>==敏捷最大的特色是迭代式开发。==各个阶段都具备独立运行和独立交付的特性。主要是以客户的需求进化为核心，采用迭代、循序渐进的方法进行软件开发。</p>
+<h2 id="3-优势"><a href="#3-优势" class="headerlink" title="3.优势"></a>3.优势</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161117030-1671256872.png" alt="img"></p>
+<ol>
+<li><p>敏捷开发属于增量式开发，对于需求范围不明确，需求变更较多的项目而言，可以很大程度上响应及拥抱变化。</p>
+</li>
+<li><p>对于互联网产品而言，市场风向转变很快，需要一种及时快速的交付形式，而敏捷开发则能更好地适用于此。</p>
+</li>
+<li><p>敏捷开发可最大程度体现80/20法则的价值，通过增量迭代，每次都优先交付那能产生80%价值效益的20%功能。能最大化单位成本收益。</p>
+</li>
+</ol>
+<h2 id="4-误区"><a href="#4-误区" class="headerlink" title="4.误区"></a>4.误区</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161137841-36444881.png" alt="img"></p>
+<h2 id="5-特点"><a href="#5-特点" class="headerlink" title="5.特点"></a>5.特点</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161152664-228752722.png" alt="img"></p>
+<h2 id="6-核心原则"><a href="#6-核心原则" class="headerlink" title="6.核心原则"></a>6.核心原则</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161209938-265477274.png" alt="img"></p>
+<h2 id="7-敏捷开发与瀑布模型开发"><a href="#7-敏捷开发与瀑布模型开发" class="headerlink" title="7.敏捷开发与瀑布模型开发"></a>7.敏捷开发与瀑布模型开发</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161246620-28601689.png" alt="img"></p>
+<h3 id="7-1、敏捷开发"><a href="#7-1、敏捷开发" class="headerlink" title="7.1、敏捷开发"></a><strong>7.1、敏捷开发</strong></h3><ul>
+<li>客人到餐馆来点菜（新项目）</li>
+<li>不确定客户想吃什么的时候，通常选好餐厅后会先看看餐厅的菜单（客户往往提不出具体的需求）</li>
+<li>根据图文菜单，客人点了是个菜（根据原型和设计稿，基本确定了需求）</li>
+<li>后厨开始准备（项目启动）</li>
+<li>配菜、炒菜，先上了两盘，让客人尝了尝味道（先提供可用实例给客户用）</li>
+<li>客人说还不错，后厨继续准备后面的菜，陆续上菜（不断迭代，不断测试）</li>
+<li>上菜过程中，客人突然发现有个菜的味道太淡了，让后厨加了点盐又端上来了（敏捷的好处，可以不断测试和需求变更）</li>
+<li>又上了两盘，不够辣，又拿到后厨加了辣（敏捷的坏处，需求没有提前明确，反复迭代，增加了工作量）</li>
+<li>到最后两盘时，客人要求换两个菜，还好没炒（迭代的好处，随时接受需求变更）</li>
+<li>客人吃完，很满意（基本满足了全部的要求）</li>
+</ul>
+<h3 id="7-2、瀑布模型开发"><a href="#7-2、瀑布模型开发" class="headerlink" title="7.2、瀑布模型开发"></a><strong>7.2、瀑布模型开发</strong></h3><ul>
+<li>客人到餐馆来点菜（新项目）</li>
+<li>不确定客户想吃什么的时候，通常选好餐厅后会先看看餐厅的菜单（客户往往提不出具体的需求）</li>
+<li>根据图文菜单，客人点了十个菜（根据原型和设计稿，基本确定了需求）</li>
+<li>后厨开始准备（项目启动）</li>
+<li>根据客人的下单配菜，炒菜（基本上不会主动去了解完整需求）</li>
+<li>半个小时了，菜还没上桌，客人饿极了（项目启动后很长一段时间客户什么都看不到）</li>
+<li>再过了二十分钟，十个菜都一起上来了（项目最终一次交付）</li>
+<li>客人说，有几个菜挺好的，但是有个菜味道淡了，有两个不够辣，还有两盘重复了想换掉（我是买单的，我要变需求）</li>
+<li>这时候大堂经理来了，说，“味道淡了可以加盐，不辣可以加辣，但是换菜不行，已经炒好的那两盘菜也是要算成本的”（瀑布的坏处，需求变更比较麻烦）</li>
+<li>于是，后厨只给客户加了盐，加了辣</li>
+<li>客人吃完，不是很满意，下次不来了（没有满足需求）</li>
+</ul>
+<h2 id="8-总结"><a href="#8-总结" class="headerlink" title="8.总结"></a>8.总结</h2><p>但总的来说，在现在管理项目过程中，并没有严格的按照完全的敏捷或者完全的瀑布模式，都是各自掺杂了其他的方式。在实际项目过程中，过于强调模式并没有意义，重要的是能不能预防问题的发生，在问题发生之后能不能用最小的成本解决，模式更多起一个参考作用<br>最后借用民国时候的一句话：少研究一些主义，多关注一些实际问题</p>
 
       
     </div>
@@ -906,206 +1140,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/03/1223%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="1EthanX">
-      <meta itemprop="description" content="生不出人，我很抱歉 :)">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/03/1223%E6%8E%B7%E9%AA%B0%E5%AD%90%E6%A8%A1%E6%8B%9F/" class="post-title-link" itemprop="url">1223掷骰子模拟</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-03 12:22:29" itemprop="dateCreated datePublished" datetime="2020-09-03T12:22:29+08:00">2020-09-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-29 12:23:44" itemprop="dateModified" datetime="2020-10-29T12:23:44+08:00">2020-10-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">刷题</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="掷骰子模拟"><a href="#掷骰子模拟" class="headerlink" title="掷骰子模拟"></a>掷骰子模拟</h1><h4 id="本来以为是数学题，做了挺久的没做出来，看了别人的解法才知道是动态规划的题。"><a href="#本来以为是数学题，做了挺久的没做出来，看了别人的解法才知道是动态规划的题。" class="headerlink" title="本来以为是数学题，做了挺久的没做出来，看了别人的解法才知道是动态规划的题。"></a><strong><em>本来以为是数学题，做了挺久的没做出来，看了别人的解法才知道是动态规划的题。</em></strong></h4><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h3><blockquote>
-<p>有一个骰子模拟器会每次投掷的时候生成一个 1 到 6 的随机数。</p>
-<p>不过我们在使用它时有个约束，就是使得投掷骰子时，连续 掷出数字 i 的次数不能超过 rollMax[i]（i 从 1 开始编号）。</p>
-<p>现在，给你一个整数数组 rollMax 和一个整数 n，请你来计算掷 n 次骰子可得到的不同点数序列的数量。</p>
-<p>假如两个序列中至少存在一个元素不同，就认为这两个序列是不同的。由于答案可能很大，所以请返回 模 10^9 + 7 之后的结果。</p>
-</blockquote>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><blockquote>
-<blockquote>
-<p>输入：n = 2, rollMax = [1,1,2,2,2,3]<br>输出：34<br>解释：我们掷 2 次骰子，如果没有约束的话，共有 6 * 6 = 36 种可能的组合。但是根据 rollMax 数组，数字 1 和 2 最多连续出现一次，所以不会出现序列 (1,1) 和 (2,2)。因此，最终答案是 36-2 = 34。</p>
-</blockquote>
-<blockquote>
-<p>输入：n = 2, rollMax = [1,1,1,1,1,1]<br>输出：30</p>
-</blockquote>
-<blockquote>
-<p>输入：n = 3, rollMax = [1,1,1,2,2,3]<br>输出：181</p>
-</blockquote>
-</blockquote>
-<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><ul>
-<li><code>1 &lt;= n &lt;= 5000</code></li>
-<li><code>rollMax.length == 6</code></li>
-<li><code>1 &lt;= rollMax[i] &lt;= 15</code></li>
-</ul>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="解法1"><a href="#解法1" class="headerlink" title="解法1"></a>解法1</h3><p>用 dp [i] [j] [k] 表示第 i 轮掷骰子掷出数字 j 时 j 连续出现 k 次的组合数量。</p>
-<p>那么有状态转移如下：</p>
-<p>当 j 并非在连续出现时（即 k == 1 时）：</p>
-<p>// j 出现 1 次的组合数等于上一轮投出非数字 j 的所有情况和<br>dp[i] [j] [1] = sum(dp [i - 1] [other != j] [:])<br>当 j 连续出现 k(k &gt; 1) 次时：</p>
-<p>if k &lt;= rollMax[j]:<br>    // 本轮投出连续出现 k 次数字 j 的情况数量等于：上一轮连续投掷出 k - 1 次 j 的情况数量<br>    dp [i] [j] [k] = dp [i - 1] [j] [k - 1]<br>ps：很多同学说测试用例是错的，可能是因为理解错题意了，题目说的是 连续 掷出数字 i 的次数不能超过 rollMax[i]，而不是数字的投掷总数。</p>
-<p>具体实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dieSimulator</span>(<span class="params">self, n: <span class="built_in">int</span>, rollMax: List[<span class="built_in">int</span>]</span>) -&gt; int:</span></span><br><span class="line">        dp = [[[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line">        mod = <span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span></span><br><span class="line">                </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 投掷的数</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">7</span>):</span><br><span class="line">                <span class="comment"># 第一次投掷</span></span><br><span class="line">                <span class="keyword">if</span> i == <span class="number">1</span>:</span><br><span class="line">                    dp[i][j][<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                </span><br><span class="line">                <span class="comment"># 数字 j 连续出现 k 次</span></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, rollMax[j - <span class="number">1</span>] + <span class="number">1</span>):</span><br><span class="line">                    dp[i][j][k] = dp[i - <span class="number">1</span>][j][k - <span class="number">1</span>]</span><br><span class="line">                    </span><br><span class="line">                <span class="comment"># 前一次投出的数不是 j</span></span><br><span class="line">                s = <span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">7</span>):</span><br><span class="line">                    <span class="keyword">if</span> l == j:</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">16</span>):</span><br><span class="line">                        s += dp[i - <span class="number">1</span>][l][k]</span><br><span class="line">                        s %= mod</span><br><span class="line">                dp[i][j][<span class="number">1</span>] = s</span><br><span class="line">        </span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">7</span>):</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">16</span>):</span><br><span class="line">                <span class="comment"># 求投掷 n 次时所有组合总和</span></span><br><span class="line">                res += dp[n][j][k]</span><br><span class="line">                res %= mod</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="解法2"><a href="#解法2" class="headerlink" title="解法2"></a>解法2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dieSimulator</span>(<span class="params">self, n: <span class="built_in">int</span>, rollMax: List[<span class="built_in">int</span>]</span>) -&gt; int:</span></span><br><span class="line">        MOD = <span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span></span><br><span class="line">        f = [[[<span class="number">0</span>] * (<span class="built_in">max</span>(rollMax) + <span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">            f[<span class="number">0</span>][i][<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, rollMax[j]+<span class="number">1</span>):</span><br><span class="line">                    <span class="keyword">if</span> k == <span class="number">1</span>:</span><br><span class="line">                        <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">                            <span class="keyword">if</span> l != j: f[i][j][k] += (<span class="built_in">sum</span>(f[i<span class="number">-1</span>][l]) % MOD)</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        f[i][j][k] = f[i<span class="number">-1</span>][j][k<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sum</span>(<span class="built_in">sum</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> f[<span class="number">-1</span>]) % MOD</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/07/pandas%E4%B9%8Bisin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="1EthanX">
-      <meta itemprop="description" content="生不出人，我很抱歉 :)">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/07/pandas%E4%B9%8Bisin/" class="post-title-link" itemprop="url">pandas之isin</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-07 12:10:21" itemprop="dateCreated datePublished" datetime="2020-08-07T12:10:21+08:00">2020-08-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-29 12:14:32" itemprop="dateModified" datetime="2020-10-29T12:14:32+08:00">2020-10-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>是用来清洗数据的常用函数。</p>
-<p>例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(train)</span><br></pre></td></tr></table></figure>
-
-<p><em>此时输出为：</em>        </p>
-<p>​                _ date    date_block_num   shop_id      item_id      item_price     item_cnt_day<br>0        02.01.2013               0                   59            22154          999.00                  1.0<br>1        03.01.2013               0                   25             2552          899.00                   1.0<br>2        05.01.2013               0                   25             2552          899.00                  -1.0<br>3        06.01.2013               0                   25             2554         1709.05                  1.0<br>4        15.01.2013               0                   25             2555         1099.00                  1.0<br>​             …             …      …      …                     …           …<br>2935844  10.10.2015       33                   25             7409          299.00                   1.0<br>2935845  09.10.2015       33                   25             7460          299.00                   1.0<br>2935846  14.10.2015       33                   25             7459          349.00                   1.0<br>2935847  22.10.2015       33                   25             7440          299.00                   1.0<br>2935848  03.10.2015       33                   25             7460          299.00                   1.0</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(train.item_id)</span><br></pre></td></tr></table></figure>
-
-<p><em>此时输出为：</em>  </p>
-<p>0          22154<br>1           2552<br>2           2552<br>3           2554<br>4           2555<br>           …<br>2935844     7409<br>2935845     7460<br>2935846     7459<br>2935847     7440<br>2935848     7460<br>Name: item_id, Length: 2935849, dtype: int64</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(train.item_id.isin(test_items))</span><br></pre></td></tr></table></figure>
-
-<p><em>此时输出为：</em>  </p>
-<p>0           True<br>1          False<br>2          False<br>3          False<br>4          False<br>           …<br>2935844     True<br>2935845     True<br>2935846     True<br>2935847     True<br>2935848     True<br>Name: item_id, Length: 2935849, dtype: bool</p>
-<p>然后可以用</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train[train.item_id.isin(test_items)]</span><br></pre></td></tr></table></figure>
-
-<p>来选出train中存在test_items的数据。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1177,7 +1211,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -20,21 +20,27 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="剑指 Offer 06. 从尾到头打印链表难度简单 输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。 示例 1： 12输入：head &#x3D; [1,3,2]输出：[2,3,1]    限制： 10 &lt;&#x3D; 链表长度 &lt;&#x3D; 10000    解法一： 1234567891011121314151617181920212223242526&#x2F;**">
+  <meta name="description" content="什么叫敏捷开发转载自 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;jentary&#x2F;p&#x2F;11506762.html  1.思维导图 2.概念简单的说，敏捷开发是一种以人为核心、迭代、循序渐进的开发方法。在敏捷开发中，软件项目的构建被切分成多个子项目，各个子项目的成果都经过测试，具备集成和可运行的特征。换言之，就是把一个大项目分为多个相互联系，但也可独立运行的小项目，并分别完成，在此过程中软件一直">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指Offer06.从尾到头打印链表">
-<meta property="og:url" content="http://yoursite.com/2020/10/27/%E5%89%91%E6%8C%87Offer06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/index.html">
+<meta property="og:title" content="什么是敏捷开发">
+<meta property="og:url" content="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="剑指 Offer 06. 从尾到头打印链表难度简单 输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。 示例 1： 12输入：head &#x3D; [1,3,2]输出：[2,3,1]    限制： 10 &lt;&#x3D; 链表长度 &lt;&#x3D; 10000    解法一： 1234567891011121314151617181920212223242526&#x2F;**">
+<meta property="og:description" content="什么叫敏捷开发转载自 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;jentary&#x2F;p&#x2F;11506762.html  1.思维导图 2.概念简单的说，敏捷开发是一种以人为核心、迭代、循序渐进的开发方法。在敏捷开发中，软件项目的构建被切分成多个子项目，各个子项目的成果都经过测试，具备集成和可运行的特征。换言之，就是把一个大项目分为多个相互联系，但也可独立运行的小项目，并分别完成，在此过程中软件一直">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-27T04:26:10.000Z">
-<meta property="article:modified_time" content="2020-10-29T04:27:26.000Z">
+<meta property="og:image" content="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161630334-1958754441.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161117030-1671256872.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161137841-36444881.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161152664-228752722.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161209938-265477274.png">
+<meta property="og:image" content="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161246620-28601689.png">
+<meta property="article:published_time" content="2020-09-28T04:41:22.000Z">
+<meta property="article:modified_time" content="2020-11-01T09:50:13.000Z">
 <meta property="article:author" content="1EthanX">
-<meta property="article:tag" content="LeetCode">
-<meta property="article:tag" content="剑指offer">
+<meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161630334-1958754441.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/10/27/%E5%89%91%E6%8C%87Offer06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/">
+<link rel="canonical" href="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">
 
 
 <script id="page-configurations">
@@ -47,7 +53,7 @@
   };
 </script>
 
-  <title>剑指Offer06.从尾到头打印链表 | Ethan's Blog</title>
+  <title>什么是敏捷开发 | Ethan's Blog</title>
   
 
 
@@ -200,7 +206,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/27/%E5%89%91%E6%8C%87Offer06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -213,7 +219,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          剑指Offer06.从尾到头打印链表
+          什么是敏捷开发
         </h1>
 
         <div class="post-meta">
@@ -223,14 +229,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-10-27 12:26:10" itemprop="dateCreated datePublished" datetime="2020-10-27T12:26:10+08:00">2020-10-27</time>
+              <time title="创建时间：2020-09-28 12:41:22" itemprop="dateCreated datePublished" datetime="2020-09-28T12:41:22+08:00">2020-09-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-29 12:27:26" itemprop="dateModified" datetime="2020-10-29T12:27:26+08:00">2020-10-29</time>
+                <time title="修改时间：2020-11-01 17:50:13" itemprop="dateModified" datetime="2020-11-01T17:50:13+08:00">2020-11-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,7 +244,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">刷题</span></a>
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
                 </span>
             </span>
 
@@ -260,26 +266,48 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="剑指-Offer-06-从尾到头打印链表"><a href="#剑指-Offer-06-从尾到头打印链表" class="headerlink" title="剑指 Offer 06. 从尾到头打印链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/">剑指 Offer 06. 从尾到头打印链表</a></h4><p>难度简单</p>
-<p>输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head &#x3D; [1,3,2]</span><br><span class="line">输出：[2,3,1]</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>限制：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 &lt;&#x3D; 链表长度 &lt;&#x3D; 10000</span><br></pre></td></tr></table></figure>
-
-
-
-<p>解法一：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] reversePrint(ListNode head) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">        ListNode temp = head;</span><br><span class="line">        <span class="keyword">while</span>(temp!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            n++;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[]  res =<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        temp = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            res[i] = temp.val;</span><br><span class="line">            temp=temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>解法二：辅助栈</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] reversePrint(ListNode head) &#123;</span><br><span class="line">        Stack&lt;ListNode&gt; stk = <span class="keyword">new</span> Stack&lt;ListNode&gt;();</span><br><span class="line">        ListNode temp = head;</span><br><span class="line">        <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(temp!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            stk.push(temp);</span><br><span class="line">            temp = temp.next;</span><br><span class="line">            size++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] res =<span class="keyword">new</span> <span class="keyword">int</span>[size];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size;i++)</span><br><span class="line">            res[i] = stk.pop().val;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h1 id="什么叫敏捷开发"><a href="#什么叫敏捷开发" class="headerlink" title="什么叫敏捷开发"></a>什么叫敏捷开发</h1><p>转载自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/jentary/p/11506762.html">https://www.cnblogs.com/jentary/p/11506762.html</a> </p>
+<h2 id="1-思维导图"><a href="#1-思维导图" class="headerlink" title="1.思维导图"></a>1.思维导图</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161630334-1958754441.png" alt="img"></p>
+<h2 id="2-概念"><a href="#2-概念" class="headerlink" title="2.概念"></a>2.概念</h2><p>简单的说，敏捷开发是一种以人为核心、迭代、循序渐进的开发方法。在敏捷开发中，软件项目的构建被切分成多个子项目，各个子项目的成果都经过测试，具备集成和可运行的特征。<br>换言之，就是把一个大项目分为多个相互联系，但也可独立运行的小项目，并分别完成，在此过程中软件一直处于可使用状态。<br>==敏捷最大的特色是迭代式开发。==各个阶段都具备独立运行和独立交付的特性。主要是以客户的需求进化为核心，采用迭代、循序渐进的方法进行软件开发。</p>
+<h2 id="3-优势"><a href="#3-优势" class="headerlink" title="3.优势"></a>3.优势</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161117030-1671256872.png" alt="img"></p>
+<ol>
+<li><p>敏捷开发属于增量式开发，对于需求范围不明确，需求变更较多的项目而言，可以很大程度上响应及拥抱变化。</p>
+</li>
+<li><p>对于互联网产品而言，市场风向转变很快，需要一种及时快速的交付形式，而敏捷开发则能更好地适用于此。</p>
+</li>
+<li><p>敏捷开发可最大程度体现80/20法则的价值，通过增量迭代，每次都优先交付那能产生80%价值效益的20%功能。能最大化单位成本收益。</p>
+</li>
+</ol>
+<h2 id="4-误区"><a href="#4-误区" class="headerlink" title="4.误区"></a>4.误区</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161137841-36444881.png" alt="img"></p>
+<h2 id="5-特点"><a href="#5-特点" class="headerlink" title="5.特点"></a>5.特点</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161152664-228752722.png" alt="img"></p>
+<h2 id="6-核心原则"><a href="#6-核心原则" class="headerlink" title="6.核心原则"></a>6.核心原则</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161209938-265477274.png" alt="img"></p>
+<h2 id="7-敏捷开发与瀑布模型开发"><a href="#7-敏捷开发与瀑布模型开发" class="headerlink" title="7.敏捷开发与瀑布模型开发"></a>7.敏捷开发与瀑布模型开发</h2><p><img src="/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/1113447-20181101161246620-28601689.png" alt="img"></p>
+<h3 id="7-1、敏捷开发"><a href="#7-1、敏捷开发" class="headerlink" title="7.1、敏捷开发"></a><strong>7.1、敏捷开发</strong></h3><ul>
+<li>客人到餐馆来点菜（新项目）</li>
+<li>不确定客户想吃什么的时候，通常选好餐厅后会先看看餐厅的菜单（客户往往提不出具体的需求）</li>
+<li>根据图文菜单，客人点了是个菜（根据原型和设计稿，基本确定了需求）</li>
+<li>后厨开始准备（项目启动）</li>
+<li>配菜、炒菜，先上了两盘，让客人尝了尝味道（先提供可用实例给客户用）</li>
+<li>客人说还不错，后厨继续准备后面的菜，陆续上菜（不断迭代，不断测试）</li>
+<li>上菜过程中，客人突然发现有个菜的味道太淡了，让后厨加了点盐又端上来了（敏捷的好处，可以不断测试和需求变更）</li>
+<li>又上了两盘，不够辣，又拿到后厨加了辣（敏捷的坏处，需求没有提前明确，反复迭代，增加了工作量）</li>
+<li>到最后两盘时，客人要求换两个菜，还好没炒（迭代的好处，随时接受需求变更）</li>
+<li>客人吃完，很满意（基本满足了全部的要求）</li>
+</ul>
+<h3 id="7-2、瀑布模型开发"><a href="#7-2、瀑布模型开发" class="headerlink" title="7.2、瀑布模型开发"></a><strong>7.2、瀑布模型开发</strong></h3><ul>
+<li>客人到餐馆来点菜（新项目）</li>
+<li>不确定客户想吃什么的时候，通常选好餐厅后会先看看餐厅的菜单（客户往往提不出具体的需求）</li>
+<li>根据图文菜单，客人点了十个菜（根据原型和设计稿，基本确定了需求）</li>
+<li>后厨开始准备（项目启动）</li>
+<li>根据客人的下单配菜，炒菜（基本上不会主动去了解完整需求）</li>
+<li>半个小时了，菜还没上桌，客人饿极了（项目启动后很长一段时间客户什么都看不到）</li>
+<li>再过了二十分钟，十个菜都一起上来了（项目最终一次交付）</li>
+<li>客人说，有几个菜挺好的，但是有个菜味道淡了，有两个不够辣，还有两盘重复了想换掉（我是买单的，我要变需求）</li>
+<li>这时候大堂经理来了，说，“味道淡了可以加盐，不辣可以加辣，但是换菜不行，已经炒好的那两盘菜也是要算成本的”（瀑布的坏处，需求变更比较麻烦）</li>
+<li>于是，后厨只给客户加了盐，加了辣</li>
+<li>客人吃完，不是很满意，下次不来了（没有满足需求）</li>
+</ul>
+<h2 id="8-总结"><a href="#8-总结" class="headerlink" title="8.总结"></a>8.总结</h2><p>但总的来说，在现在管理项目过程中，并没有严格的按照完全的敏捷或者完全的瀑布模式，都是各自掺杂了其他的方式。在实际项目过程中，过于强调模式并没有意义，重要的是能不能预防问题的发生，在问题发生之后能不能用最小的成本解决，模式更多起一个参考作用<br>最后借用民国时候的一句话：少研究一些主义，多关注一些实际问题</p>
 
     </div>
 
@@ -295,7 +323,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/10/27/%E5%89%91%E6%8C%87Offer06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/" title="剑指Offer06.从尾到头打印链表">http://yoursite.com/2020/10/27/剑指Offer06-从尾到头打印链表/</a>
+    <a href="http://yoursite.com/2020/09/28/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" title="什么是敏捷开发">http://yoursite.com/2020/09/28/什么是敏捷开发/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -306,8 +334,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-              <a href="/tags/%E5%89%91%E6%8C%87offer/" rel="tag"># 剑指offer</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
           </div>
 
         
@@ -316,12 +343,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/10/14/%E5%89%91%E6%8C%87Offer04-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/" rel="prev" title="剑指Offer04.二维数组中的查找">
-      <i class="fa fa-chevron-left"></i> 剑指Offer04.二维数组中的查找
+    <a href="/2020/09/07/python%E5%AD%97%E5%85%B8%E6%8C%89%E7%85%A7%E9%94%AE%E5%80%BC%E6%8E%92%E5%BA%8F-sorted%E7%9A%84%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/" rel="prev" title="python字典按照键值排序,sorted的用法总结">
+      <i class="fa fa-chevron-left"></i> python字典按照键值排序,sorted的用法总结
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/10/27/%E5%89%91%E6%8C%87Offer09-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" rel="next" title="剑指Offer09.用两个栈实现队列">
-      剑指Offer09.用两个栈实现队列 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/09/29/Java%E4%B8%ADextends%E5%92%8Cimplements/" rel="next" title="Java中extends和implements">
+      Java中extends和implements <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -381,7 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%91%E6%8C%87-Offer-06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">剑指 Offer 06. 从尾到头打印链表</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E5%8F%AB%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">什么叫敏捷开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">1.思维导图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.</span> <span class="nav-text">2.概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BC%98%E5%8A%BF"><span class="nav-number">1.3.</span> <span class="nav-text">3.优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%AF%AF%E5%8C%BA"><span class="nav-number">1.4.</span> <span class="nav-text">4.误区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E7%89%B9%E7%82%B9"><span class="nav-number">1.5.</span> <span class="nav-text">5.特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%A0%B8%E5%BF%83%E5%8E%9F%E5%88%99"><span class="nav-number">1.6.</span> <span class="nav-text">6.核心原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E4%B8%8E%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91"><span class="nav-number">1.7.</span> <span class="nav-text">7.敏捷开发与瀑布模型开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1%E3%80%81%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91"><span class="nav-number">1.7.1.</span> <span class="nav-text">7.1、敏捷开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2%E3%80%81%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91"><span class="nav-number">1.7.2.</span> <span class="nav-text">7.2、瀑布模型开发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E6%80%BB%E7%BB%93"><span class="nav-number">1.8.</span> <span class="nav-text">8.总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
